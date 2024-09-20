@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+
+use App\Repositories\CourseRepository;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
 use App\Repositories\Eloquent\EloquentStudentRepository;
 
@@ -26,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(HRRepositoryInterface::class, EloquentHRRepository::class);
         $this->app->singleton(OrganizationRepository::class, function ($app) {
             return new OrganizationRepository();
+        });
+        $this->app->singleton(CourseRepository::class, function ($app) {
+            return new CourseRepository();
         });
         }
 
